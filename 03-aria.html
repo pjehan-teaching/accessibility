@@ -1,0 +1,524 @@
+<section id="aria">
+
+    <section>
+        <h2>ARIA</h2>
+        <h3>Accessible Rich Internet Applications</h3>
+    </section>
+
+    <section>
+        <h3>Définition</h3>
+        <p>
+            ARIA, ou Accessible Rich Internet Applications, est une spécification du <strong>W3C</strong> qui vise à
+            <strong>améliorer l'accessibilité</strong> des applications web dynamiques.
+            Elle permet aux développeurs d'ajouter des <strong>attributs spécifiques</strong> aux éléments HTML pour
+            fournir des informations supplémentaires
+        </p>
+        <p>
+            Ces attributs peuvent être catégorisés en deux types principaux :
+        </p>
+        <ul>
+            <li>
+                <strong>Rôles</strong> : Ils définissent le type d'élément et son comportement, comme un bouton, une
+                boîte de dialogue, etc.
+            </li>
+            <li>
+                <strong>Attributs</strong> : Ils sont utilisés pour décrire les états et les propriétés des
+                éléments interactifs comme les champs de formulaire, les menus, etc.
+            </li>
+        </ul>
+        <blockquote>
+            <p>
+                No ARIA is better than Bad ARIA
+            </p>
+            <footer>
+                <cite>W3C - ARIA Authoring Practices Guide</cite>
+            </footer>
+        </blockquote>
+    </section>
+
+    <section>
+        <h3>Rôles</h3>
+        <p>
+            Les rôles ARIA permettent d'<strong>ajouter des informations sémantiques</strong> aux éléments HTML,
+            ce qui aide les technologies d'assistance à comprendre la structure et le comportement des éléments interactifs.
+        </p>
+        <p>
+            Certaines balises HTML ont des <strong>rôles ARIA prédéfinis</strong>, comme
+            <code class="language-html">&lt;button&gt;</code>, <code class="language-html">&lt;nav&gt;</code>,
+            ou <code class="language-html">&lt;form&gt;</code>.
+            Dans ces cas, les rôles ARIA sont implicites et n'ont <strong>pas besoin d'être spécifiés explicitement</strong>.
+        </p>
+        <p>
+            Cependant, pour les éléments HTML qui n'ont pas de rôle ARIA prédéfini, il est important de
+            <strong>spécifier le rôle ARIA approprié</strong> pour garantir une accessibilité optimale.
+        </p>
+        <p>
+            Les rôles ARIA peuvent être catégorisés en <strong>six catégories</strong>.
+        </p>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles" class="info" target="_blank">
+                MDN - ARIA Roles Reference
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Rôles - Structure d'un document</h3>
+        <p>
+            Les rôles de structure d'un document aident à <strong>organiser le contenu d'une section</strong> d'une page web.
+            Ils sont essentiels pour la navigation et la compréhension de la hiérarchie du contenu.
+        </p>
+        <p>
+            La majorité des éléments HTML permettent aujourd'hui de définir des rôles ARIA implicites et il n'est donc
+            <strong>pas nécessaire de les spécifier explicitement</strong>.
+            Par exemple, les éléments <code class="language-html">&lt;article&gt;</code>,
+            <code class="language-html">&lt;table&gt;</code>, <code class="language-html">&lt;img&gt;</code>...
+            permettent de structurer le document sans avoir besoin d'ajouter des rôles ARIA.
+        </p>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles#1._document_structure_roles" class="info" target="_blank">
+                MDN - Document structure roles
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Rôles - Structure d'un document</h3>
+        <p>
+            Cependant, certains éléments HTML n'<strong>existent pas</strong> ou ne sont pas suffisamment sémantiques
+            pour représenter des éléments spécifiques d'un document.
+        </p>
+        <p>
+            Par exemple, il n'existe pas d'élément HTML pour représenter un composant de type "tooltip".
+            Dans ce cas, il est nécessaire d'utiliser un rôle ARIA explicite pour indiquer la fonction de l'élément :
+        </p>
+        <pre><code class="language-html">
+&lt;button aria-describedby="buttontooltip"&gt;Bouton&lt;/button&gt;
+&lt;div role="tooltip" id="buttontooltip"&gt;
+    <p>Contenu du tooltip</p>
+&lt;/div&gt;</code></pre>
+        <p>
+            Bien entendu, il faudra ajouter du code CSS pour gérer l'affichage du tooltip.
+        </p>
+        <p>
+            De plus, le bouton devra être accessible au clavier (tabulation) et le tooltip devra pouvoir être
+            <strong>fermé</strong> par l'utilisateur en appuyant sur la touche <span class="keyboard-key">Échap</span>
+            ce qui impliquera d'écrire du code JavaScript complémentaire.
+        </p>
+    </section>
+
+    <section>
+        <h3>Rôles - Structure d'un document</h3>
+        <p>
+            Voici quelques exemples de rôles ARIA pour la structure d'un document :
+        </p>
+        <ul>
+            <li>
+                <code class="language-html">role="toolbar"</code> : Représente une barre d'outils contenant des contrôles.
+                Par exemple, une barre d'outils de mise en forme dans un éditeur de texte.
+            </li>
+            <li>
+                <code class="language-html">role="feed"</code> : Représente un flux d'actualités ou de contenu.
+            </li>
+            <li>
+                <code class="language-html">role="math"</code> : Représente une expression mathématique.
+            </li>
+            <li>
+                <code class="language-html">role="presentation"</code> / <code class="language-html">role="none"</code> :
+                Indique que l'élément est utilisé uniquement pour la présentation et n'a pas de signification sémantique.
+            </li>
+            <li>
+                <code class="language-html">role="note"</code> : Représente une note ou un commentaire dans le document.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Rôles - Widget</h3>
+        <p>
+            Les rôles de type "widget" sont utilisés pour décrire des éléments interactifs.
+            Ils sont relativement similaires aux rôles de structure du document, mais seront <strong>interactifs</strong>
+            et nécessiteront généralement l'utilisation de <strong>JavaScript</strong>.
+        </p>
+        <p>
+            De nouveaux, il est préférable d'utiliser les éléments HTML qui ont des rôles ARIA implicites,
+            comme <code class="language-html">&lt;button&gt;</code>, <code class="language-html">&lt;progressbar&gt;</code>,
+            <code class="language-html">&lt;checkbox&gt;</code>, etc.
+        </p>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles#2._widget_roles" class="info" target="_blank">
+                MDN - Widget roles
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Rôles - Widget</h3>
+        <p>
+            Cependant, il existe des cas où les éléments HTML ne sont pas suffisants pour représenter des widgets
+            spécifiques. Dans ces cas, il est nécessaire d'utiliser des rôles ARIA explicites.
+        </p>
+        <p>
+            Par exemple, si vous créez un composant de type "slider" (curseur), vous pouvez utiliser les rôles ARIA
+            <code class="language-html">role="tab"</code>, <code class="language-html">role="tablist"</code> et
+            <code class="language-html">role="tabpanel"</code> pour indiquer qu'il s'agit d'une navigation par onglets.
+        </p>
+        <pre><code class="language-html">&lt;div role="tablist"&gt;
+    &lt;button role="tab" aria-selected="true" aria-controls="panel-1"&gt;Onglet 1&lt;/button&gt;
+    &lt;button role="tab" aria-controls="panel-2"&gt;Onglet 2&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id="panel-1" role="tabpanel" aria-labelledby="tab-1"&gt;
+    Contenu de l'onglet 1
+&lt;/div&gt;
+&lt;div id="panel-2" role="tabpanel" aria-labelledby="tab-2"&gt;
+    Contenu de l'onglet 2
+&lt;/div&gt;</code></pre>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/tab_role#example" class="info" target="_blank">
+                MDN - Tab role example
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Rôles - Widget</h3>
+        <p>
+            Voici quelques exemples de rôles ARIA pour les widgets :
+        </p>
+        <ul>
+            <li>
+                <code class="language-html">role="menu"</code> : Représente un menu déroulant (préférer la balise
+                <code class="language-html">&lt;nav&gt;</code> pour les menus de navigation).
+            </li>
+            <li>
+                <code class="language-html">role="tree"</code> : Représente une structure arborescente,
+                comme un explorateur de fichiers.
+            </li>
+            <li>
+                <code class="language-html">role="separator"</code> : Permet de séparer visuellement des éléments
+                d'une page (préférer la balise <code class="language-html">&lt;hr&gt;</code> pour les séparateurs horizontaux).
+                Peut être utilisé par exemple sur une image.
+            </li>
+            <li>
+                <code class="language-html">role="switch"</code> : Représente un interrupteur à bascule (préférer la balise
+                <code class="language-html">&lt;input type="checkbox"&gt;</code> pour les cases à cocher).
+            </li>
+            <li>
+                <code class="language-html">role="slider"</code> : Représente un curseur pour sélectionner une valeur
+                dans une plage (préférer la balise <code class="language-html">&lt;input type="range"&gt;</code>).
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Rôles - Repères</h3>
+        <p>
+            Les rôles de type "repères" sont utilisés pour définir la structure d'une page web.
+        </p>
+        <p>
+            La plupart des éléments HTML existants permettant de définir des rôles ARIA implicites,
+            comme <code class="language-html">&lt;header&gt;</code>, <code class="language-html">&lt;footer&gt;</code>,
+            <code class="language-html">&lt;main&gt;</code>, <code class="language-html">&lt;section&gt;</code>...
+            Il n'est donc <strong>pas nécessaire de les spécifier explicitement</strong>.
+        </p>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles#3._landmark_roles" class="info" target="_blank">
+                MDN - Landmark roles
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Rôles - Régions dynamiques</h3>
+        <p>
+            Les rôles de type "régions dynamiques" (live regions) sont utilisés pour indiquer des sections de contenu qui peuvent
+            changer dynamiquement, comme les notifications, les alertes ou les messages d'erreur.
+        </p>
+        <p>
+            Les personnes malvoyantes ou aveugles peuvent être ainsi informées des changements de contenu.
+        </p>
+        <p>
+            Il n'existe pas d'élément HTML spécifique pour les régions dynamiques, et il sera donc nécessaire
+            d'utiliser des rôles ARIA explicites pour indiquer la nature dynamique du contenu.
+        </p>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles#3._landmark_roles" class="info" target="_blank">
+                MDN - Live regions
+            </a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions" class="info" target="_blank">
+                MDN - Live regions guide
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Rôles - Régions dynamiques</h3>
+        <p>
+            Voici quelques exemples de rôles ARIA pour les régions dynamiques :
+        </p>
+        <ul>
+            <li>
+                <code class="language-html">role="alert"</code> : Représente une alerte ou un message d'erreur important.
+            </li>
+            <li>
+                <code class="language-html">role="log"</code> : Représente un journal d'événements ou de messages.
+            </li>
+            <li>
+                <code class="language-html">role="marquee"</code> : Similaire au rôle "log", mais les informations
+                ne sont pas ordonnées par date.
+            </li>
+            <li>
+                <code class="language-html">role="status"</code> : Représente un message d'état ou de progression.
+            </li>
+            <li>
+                <code class="language-html">role="timer"</code> : Représente un compte à rebours ou un minuteur.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Rôles - Fenêtre</h3>
+        <p>
+            Les rôles de type "fenêtre" (window roles) sont utilisés pour décrire des éléments qui se comportent comme
+            des dialogues dans une application web.
+        </p>
+        <p>
+            Il n'existe que deux rôles ARIA de type "fenêtre" :
+        </p>
+        <ul>
+            <li>
+                <code class="language-html">role="dialog"</code> : Représente une boîte de dialogue modale ou non modale.
+            </li>
+            <li>
+                <code class="language-html">role="alertdialog"</code> : Représente une boîte de dialogue modale qui
+                nécessite une attention immédiate et nécessite une action de l'utilisateur.
+            </li>
+        </ul>
+        <p>
+            Il est possible d'utiliser la balise HTML <code class="language-html">&lt;dialog&gt;</code>
+            pour créer des dialogues.
+        </p>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles#5._window_roles" class="info" target="_blank">
+                MDN - Window roles
+            </a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog" class="info" target="_blank">
+                MDN - Dialog tag
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Attributs</h3>
+        <p>
+            Les attributs ARIA sont utilisés pour fournir des informations supplémentaires sur les éléments interactifs
+            et leur état.
+            Ils sont essentiels pour aider les technologies d'assistance à comprendre le comportement des éléments
+            et à fournir une expérience utilisateur accessible.
+        </p>
+
+        <p>
+            Les rôles ARIA peuvent être catégorisés en <strong>quatre catégories</strong> :
+        </p>
+        <ul>
+            <li>
+                <strong>Widget</strong> : Attributs qui décrivent les éléments interactifs, comme les boutons,
+                les cases à cocher, etc.
+            </li>
+            <li>
+                <strong>Région dynamique</strong> : Attributs qui décrivent les sections de contenu qui peuvent changer
+                dynamiquement, comme les notifications, les alertes, etc.
+            </li>
+            <li>
+                <strong>Drag and drop</strong> : Attributs qui décrivent les éléments pouvant être glissés et déposés,
+                comme les listes réordonnables, les tableaux, etc.
+            </li>
+            <li>
+                <strong>Relation</strong> : Attributs qui décrivent les relations entre les éléments, comme les labels
+                associés aux champs de formulaire, les lignes d'un tableau, etc.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Attributs - Widget</h3>
+        <p>
+            Les attributs ARIA de type "widget" sont utilisés pour décrire les <strong>éléments interactifs</strong> et leur état.
+            Ils sont essentiels pour aider les technologies d'assistance à <strong>comprendre le comportement</strong> des éléments
+            et à fournir une expérience utilisateur accessible.
+        </p>
+        <p>
+            Voici quelques exemples d'attributs ARIA de type "widget" :
+        </p>
+        <ul>
+            <li>
+                <code class="language-html">aria-expanded</code> : Indique si un élément est développé ou réduit.
+            </li>
+            <li>
+                <code class="language-html">aria-hidden</code> : Indique si un élément est visible ou caché.
+            </li>
+            <li>
+                <code class="language-html">aria-label</code> : Fournit une étiquette textuelle pour un élément.
+                <pre><code class="language-html">&lt;button aria-label="Close"&gt;x&lt;/button&gt;</code></pre>
+            </li>
+        </ul>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes#widget_attributes" class="info" target="_blank">
+                MDN - Widget attributes
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Attributs - Régions dynamiques</h3>
+        <p>
+            Les attributs ARIA de type "régions dynamiques" sont utilisés pour décrire les sections de contenu qui
+            peuvent changer dynamiquement, comme les notifications, les alertes ou les messages d'erreur.
+        </p>
+        <p>
+            Il existe quatre attributs ARIA pour les régions dynamiques :
+        </p>
+        <ul>
+            <li>
+                <code class="language-html">aria-busy</code> : Indique si un élément est en cours de traitement ou non.
+            </li>
+            <li>
+                <code class="language-html">aria-live</code> : Indique le niveau de priorité des mises à jour du contenu.
+                Par exemple, <code class="language-html">aria-live="polite"</code> indique que les mises à jour doivent être annoncées
+                lorsque l'utilisateur n'est pas occupé. Les valeurs possibles sont off, polite et assertive.
+            </li>
+            <li>
+                <code class="language-html">aria-relevant</code> : Indique quels types de changements (ajout/suppression)
+                dans le contenu doivent être annoncés.
+                Les valeurs possibles sont additions, removals, text et all.
+            </li>
+            <li>
+                <code class="language-html">aria-atomic</code> : Indique si les mises à jour du contenu doivent être
+                annoncées en tant qu'unité atomique ou non.
+            </li>
+        </ul>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes#live_region_attributes" class="info" target="_blank">
+                MDN - Live region attributes
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Attributs - Régions dynamiques</h3>
+        <p>
+            Voici un exemple d'utilisation des attributs ARIA de type "régions dynamiques" :
+        </p>
+        <pre><code class="language-html">&lt;p aria-live="polite"&gt;
+    Prix total : &lt;span id="total-price"&gt;0&lt;/span&gt; €
+&lt;/p&gt;</code></pre>
+        <p>
+            Dans cet exemple, le paragraphe contenant le prix total est marqué comme une région dynamique avec
+            <code class="language-html">aria-live="polite"</code>.
+            Cela signifie que les mises à jour du prix total seront annoncées lorsque l'utilisateur n'est pas occupé.
+        </p>
+        <p>
+            Cependant, <strong>seul le texte mis à jour sera annoncé</strong> ce qui peut être déroutant pour l'utilisateur.
+        </p>
+        <p>
+            Par exemple, si le prix total passe de 0 € à 10 €, l'utilisateur entendra :
+            <em>10</em>
+        </p>
+    </section>
+
+    <section>
+        <h3>Attributs - Régions dynamiques</h3>
+        <p>
+            Pour éviter cela, il est préférable d'utiliser l'attribut <code class="language-html">aria-atomic="true"</code>
+            pour indiquer que le contenu doit être annoncé en tant qu'unité atomique :
+        </p>
+        <pre><code class="language-html">&lt;p aria-live="polite" aria-atomic="true"&gt;
+    Prix total : &lt;span id="total-price"&gt;0&lt;/span&gt; €
+&lt;/p&gt;</code></pre>
+        <p>
+            Dans cet exemple, l'ensemble du paragraphe sera annoncé lorsque le prix total change, ce qui est plus
+            cohérent pour l'utilisateur.
+        </p>
+        <p>
+            À présent, si le prix total passe de 0 € à 10 €, l'utilisateur entendra :
+            <em>Prix total : 10 €</em>
+        </p>
+    </section>
+
+    <section>
+        <h3>Attributs - Drag and drop</h3>
+        <p>
+            Les attributs ARIA de type "drag and drop" sont utilisés pour décrire les éléments pouvant être glissés
+            et déposés, comme les listes réordonnables, les tableaux, etc.
+        </p>
+        <p>
+            Il existe deux attributs ARIA pour les éléments de type "drag and drop" :
+        </p>
+        <ul>
+            <li>
+                <code class="language-html">aria-grabbed</code> : Indique si un élément est actuellement saisi pour
+                être déplacé.
+            </li>
+            <li>
+                <code class="language-html">aria-dropeffect</code> : Indique l'effet de dépôt attendu lors du glissement
+                d'un élément sur une zone de dépôt.
+            </li>
+        </ul>
+        <p>
+            Cependant, ces deux attributs sont maintenant <strong>obsolètes</strong> et ne doivent plus être utilisés.
+        </p>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes#drag-and-drop_attributes" class="info" target="_blank">
+                MDN - Drag and drop attributes
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Attributs - Relation</h3>
+        <p>
+            Les attributs ARIA de type "relation" sont utilisés pour décrire les relations entre les éléments,
+            comme les labels associés aux champs de formulaire, les lignes d'un tableau, etc.
+        </p>
+        <p>
+            Voici quelques exemples d'attributs ARIA de type "relation" :
+        </p>
+        <ul>
+            <li>
+                <code class="language-html">aria-controls</code> : Indique l'ID d'un élément contrôlé par l'élément actuel.
+                Par exemple, un bouton permettant d'afficher un onglet de contenu.
+            </li>
+            <li>
+                <code class="language-html">aria-labelledby</code> : Indique l'ID d'un élément qui sert de label pour
+                l'élément actuel.
+                <pre><code class="language-html">&lt;h2 id="heading"&gt;Comment utiliser les ARIA attributes&lt;h2&gt;
+&lt;button aria-labelledby="heading"&gt;Lire la suite&lt;/button&gt;</code></pre>
+            </li>
+            <li>
+                <code class="language-html">aria-describedby</code> : Indique l'ID d'un élément qui décrit l'élément actuel.
+                Cet attribut est similaire à <code class="language-html">aria-labelledby</code>, mais il est utilisé pour fournir
+                des informations supplémentaires plutôt qu'un label.
+            </li>
+        </ul>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes#relationship_attributes" class="info" target="_blank">
+                MDN - Relationship attributes
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Patterns courants</h3>
+        <p>
+            Le site du W3C propose une liste de <strong>patterns courants</strong> pour l'utilisation des rôles ARIA.
+            Ces patterns sont des exemples d'utilisation des rôles ARIA pour des composants courants tels que les
+            menus, les onglets, les dialogues, etc.
+        </p>
+        <footer>
+            <a href="https://www.w3.org/WAI/ARIA/apg/patterns/" class="info" target="_blank">
+                W3C - ARIA Authoring Practices Guide (APG)
+            </a>
+        </footer>
+    </section>
+
+</section>
