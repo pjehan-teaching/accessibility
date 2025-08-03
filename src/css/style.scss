@@ -2,6 +2,16 @@
 
 .reveal {
 
+    font-size: 1.8em;
+
+    strong {
+        background: linear-gradient(180deg,rgba(255,255,255,0) 70%, rgba(125, 142, 255, 0.25) 40%);
+    }
+
+    ul {
+        margin-bottom: 1em;
+    }
+
     pre[class*="language-"] {
         width: 100%;
         box-sizing: border-box;
