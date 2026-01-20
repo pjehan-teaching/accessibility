@@ -20,7 +20,108 @@
     </section>
 
     <section>
+        <h3>HTML - Attributs utiles</h3>
+        <p>
+            Quelques attributs HTML importants pour l'accessibilité :
+        </p>
+        <ul>
+            <li>
+                <code class="language-html">lang</code> : Définit la langue du document ou d'un élément.
+                <pre><code class="language-html">&lt;html lang="fr"&gt;</code></pre>
+            </li>
+            <li>
+                <code class="language-html">alt</code> : Texte alternatif pour les images.
+                <pre><code class="language-html">&lt;img src="photo.jpg" alt="Description de l'image"&gt;</code></pre>
+            </li>
+            <li>
+                <code class="language-html">tabindex</code> : Contrôle l'ordre de navigation au clavier.
+                <pre><code class="language-html">&lt;div tabindex="0"&gt;Élément focusable&lt;/div&gt;</code></pre>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>HTML - Formulaires accessibles</h3>
+        <p>
+            Associer correctement les <strong>labels aux champs</strong> de formulaire est essentiel :
+        </p>
+        <pre><code class="language-html">&lt;!-- Méthode 1 : Attribut for/id --&gt;
+&lt;label for="email"&gt;Email&lt;/label&gt;
+&lt;input type="email" id="email" name="email"&gt;
+
+&lt;!-- Méthode 2 : Label englobant --&gt;
+&lt;label&gt;
+    Email
+    &lt;input type="email" name="email"&gt;
+&lt;/label&gt;
+
+&lt;!-- Indiquer les champs obligatoires --&gt;
+&lt;label for="name"&gt;Nom &lt;span aria-hidden="true"&gt;*&lt;/span&gt;&lt;/label&gt;
+&lt;input type="text" id="name" required aria-required="true"&gt;</code></pre>
+    </section>
+
+    <section>
+        <h3>HTML - Structure sémantique</h3>
+        <p>
+            Utiliser les <strong>balises HTML sémantiques</strong> améliore l'accessibilité et le référencement :
+        </p>
+        <pre><code class="language-html">&lt;header&gt;
+    &lt;nav aria-label="Navigation principale"&gt;...&lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;article&gt;
+        &lt;h1&gt;Titre principal&lt;/h1&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Sous-titre&lt;/h2&gt;
+            &lt;p&gt;Contenu...&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/article&gt;
+    &lt;aside&gt;Contenu secondaire&lt;/aside&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;...&lt;/footer&gt;</code></pre>
+    </section>
+
+    <section>
+        <h3>JavaScript - Gestion du focus</h3>
+        <p>
+            Lors de l'ouverture d'une modale ou d'un changement de contexte, il est important de
+            <strong>gérer le focus</strong> correctement :
+        </p>
+        <pre><code class="language-javascript">// Ouvrir une modale
+function openModal(modal) {
+    modal.showModal();
+    // Déplacer le focus vers la modale
+    modal.querySelector('button, input, [tabindex="0"]')?.focus();
+}
+
+// Fermer et restaurer le focus
+function closeModal(modal, previousFocus) {
+    modal.close();
+    previousFocus?.focus();
+}</code></pre>
+    </section>
+
+    <section>
         <h3>CSS - prefers-color-scheme</h3>
+        <p>
+            La media query <code class="language-css">prefers-color-scheme</code> permet de détecter si l'utilisateur
+            a configuré son système pour utiliser un <strong>thème clair ou sombre</strong>.
+        </p>
+        <pre><code class="language-css">/* Thème clair par défaut */
+body {
+    background-color: white;
+    color: black;
+}
+
+/* Thème sombre si l'utilisateur le préfère */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: white;
+    }
+}</code></pre>
         <footer>
             <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme" class="info" target="_blank">
                 prefers-color-scheme
@@ -30,6 +131,22 @@
 
     <section>
         <h3>CSS - prefers-reduced-motion</h3>
+        <p>
+            La media query <code class="language-css">prefers-reduced-motion</code> permet de détecter si l'utilisateur
+            a demandé à <strong>réduire les animations</strong>. Cela concerne les personnes souffrant de
+            troubles vestibulaires (vertiges), d'épilepsie ou de migraines.
+        </p>
+        <pre><code class="language-css">/* Animation par défaut */
+.element {
+    transition: transform 0.3s ease;
+}
+
+/* Désactiver les animations si l'utilisateur le souhaite */
+@media (prefers-reduced-motion: reduce) {
+    .element {
+        transition: none;
+    }
+}</code></pre>
         <footer>
             <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" class="info" target="_blank">
                 prefers-reduced-motion
@@ -39,6 +156,26 @@
 
     <section>
         <h3>CSS - prefers-contrast</h3>
+        <p>
+            La media query <code class="language-css">prefers-contrast</code> permet de détecter si l'utilisateur
+            a demandé un <strong>contraste plus élevé ou plus faible</strong>. Utile pour les personnes malvoyantes.
+        </p>
+        <pre><code class="language-css">/* Style par défaut */
+.button {
+    background-color: #6200ee;
+    border: none;
+}
+
+/* Contraste élevé : ajouter des bordures visibles */
+@media (prefers-contrast: more) {
+    .button {
+        background-color: #000;
+        border: 3px solid white;
+    }
+}</code></pre>
+        <p>
+            Les valeurs possibles sont : <code>no-preference</code>, <code>more</code>, <code>less</code> et <code>custom</code>.
+        </p>
         <footer>
             <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-contrast" class="info" target="_blank">
                 prefers-contrast
@@ -48,6 +185,22 @@
 
     <section>
         <h3>CSS - prefers-reduced-transparency</h3>
+        <p>
+            La media query <code class="language-css">prefers-reduced-transparency</code> permet de détecter si l'utilisateur
+            a demandé à <strong>réduire les effets de transparence</strong>. Cela aide les personnes ayant des
+            difficultés à lire du texte sur des fonds semi-transparents.
+        </p>
+        <pre><code class="language-css">/* Style par défaut avec transparence */
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Fond opaque si l'utilisateur préfère */
+@media (prefers-reduced-transparency: reduce) {
+    .modal-backdrop {
+        background-color: #000;
+    }
+}</code></pre>
         <footer>
             <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-transparency" class="info" target="_blank">
                 prefers-reduced-transparency
@@ -57,6 +210,22 @@
 
     <section>
         <h3>CSS - forced-colors</h3>
+        <p>
+            La media query <code class="language-css">forced-colors</code> permet de détecter si l'utilisateur
+            utilise un <strong>mode de couleurs forcées</strong> (comme le mode contraste élevé de Windows).
+            Dans ce mode, le navigateur remplace les couleurs par celles définies par l'utilisateur.
+        </p>
+        <pre><code class="language-css">/* Ajouter une bordure visible en mode forced-colors */
+@media (forced-colors: active) {
+    .button {
+        border: 2px solid currentColor;
+    }
+
+    /* Empêcher le navigateur de modifier certaines couleurs */
+    .icon {
+        forced-color-adjust: none;
+    }
+}</code></pre>
         <footer>
             <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors" class="info" target="_blank">
                 forced-colors
@@ -65,7 +234,26 @@
     </section>
 
     <section>
-        <h3>CSS - focus-visible</h3>
+        <h3>CSS - :focus-visible</h3>
+        <p>
+            La pseudo-classe <code class="language-css">:focus-visible</code> permet d'appliquer un style
+            <strong>uniquement lorsque le focus est pertinent</strong> pour l'utilisateur (navigation clavier).
+            Contrairement à <code>:focus</code>, elle ne s'applique pas lors d'un clic souris.
+        </p>
+        <pre><code class="language-css">/* Supprimer l'outline par défaut */
+button:focus {
+    outline: none;
+}
+
+/* Afficher l'outline uniquement pour la navigation clavier */
+button:focus-visible {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+}</code></pre>
+        <p>
+            Cela permet de garder une <strong>indication visuelle pour les utilisateurs clavier</strong>
+            tout en évitant l'outline lors des clics souris.
+        </p>
         <footer>
             <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible" class="info" target="_blank">
                 :focus-visible
@@ -75,11 +263,45 @@
 
     <section>
         <h3>CSS - any-pointer</h3>
+        <p>
+            La media query <code class="language-css">any-pointer</code> permet de détecter la
+            <strong>précision du dispositif de pointage</strong> disponible (souris, tactile, stylet).
+        </p>
+        <pre><code class="language-css">/* Agrandir les zones cliquables pour les écrans tactiles */
+@media (any-pointer: coarse) {
+    button, a {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px 16px;
+    }
+}</code></pre>
+        <p>
+            Les valeurs possibles sont : <code>none</code> (pas de pointeur), <code>coarse</code> (pointeur imprécis comme le doigt)
+            et <code>fine</code> (pointeur précis comme la souris).
+        </p>
         <footer>
             <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/any-pointer" class="info" target="_blank">
                 any-pointer
             </a>
         </footer>
+    </section>
+
+    <section>
+        <h3>Ressources</h3>
+        <ul>
+            <li>
+                <a href="https://www.a11yproject.com/checklist/" target="_blank">A11y Project - Checklist</a>
+            </li>
+            <li>
+                <a href="https://webaim.org/" target="_blank">WebAIM - Web Accessibility In Mind</a>
+            </li>
+            <li>
+                <a href="https://inclusive-components.design/" target="_blank">Inclusive Components</a>
+            </li>
+            <li>
+                <a href="https://www.deque.com/axe/" target="_blank">Axe - Outil de test d'accessibilité</a>
+            </li>
+        </ul>
     </section>
 
 </section>
