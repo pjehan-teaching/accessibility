@@ -35,22 +35,40 @@
     </section>
 
     <section>
-        <h3>Chrome dev tools</h3>
-        <ul>
-            <li>
-                https://developer.chrome.com/blog/full-accessibility-tree
-            </li>
-        </ul>
+        <h3>Dev Tools</h3>
         <p>
-            Pour vérifier le contrast des couleurs, vous pouvez utiliser l'outil intégré dans les DevTools de Chrome.
-            Ouvrez les DevTools, allez dans l'onglet "Elements", sélectionnez un élément, puis cliquez sur l'icône de contraste des couleurs dans la barre latérale droite.
+            La plupart des navigateurs modernes intègrent des <strong>outils de développement</strong> (DevTools) qui
+            incluent des fonctionnalités pour évaluer l'accessibilité des pages web.
+            Ces outils peuvent <strong>identifier certains problèmes d'accessibilité</strong> et fournir des
+            recommandations pour les résoudre.
         </p>
     </section>
 
     <section>
-        <h3>Firefox dev tools</h3>
+        <h3>Dev Tools - Audit</h3>
         <p>
-            L'outil d'accessibilité de Firefox est intégré dans un onglet à part entière du DevTools.
+            L'onglet Audit (ou Lighthouse dans Chrome) permet de réaliser un audit d'accessibilité
+            d'une page web.
+            Il analyse divers aspects de la page, tels que la structure du contenu, les alternatives textuelles,
+            la navigation au clavier, et fournit un rapport détaillé avec des suggestions d'amélioration.
+        </p>
+        <p>
+            Firefox intègre également un outil similaire appelé "Accessibility Inspector".
+        </p>
+    </section>
+
+    <section>
+        <h3>Dev Tools - Accessibility Tree</h3>
+        <p>
+            L'arbre d'accessibilité (Accessibility Tree) est une représentation hiérarchique des éléments
+            d'une page web telle qu'elle est perçue par les technologies d'assistance.
+            Il permet aux développeurs de comprendre comment leur contenu sera interprété par les lecteurs d'écran
+            et autres outils d'assistance.
+        </p>
+        <p>
+            Il est basé sur le DOM (Document Object Model) de la page, mais simpifié pour ne montrer que les éléments
+            pertinents pour l'accessibilité, avec des informations supplémentaires telles que les rôles ARIA,
+            les états et les propriétés.
         </p>
     </section>
 
@@ -64,6 +82,20 @@
                 https://github.com/IBMa/equal-access
             </li>
         </ul>
+    </section>
+
+    <section>
+        <h3>Limitations</h3>
+        <p>
+            Il est important de noter que les outils d'évaluation automatique de l'accessibilité ne
+            <strong>peuvent pas garantir une conformité totale</strong> aux normes d'accessibilité.
+            Ils peuvent identifier certains problèmes, mais une <strong>évaluation manuelle</strong> est souvent nécessaire
+            pour une analyse complète.
+        </p>
+        <p>
+            Par exemple, différents outils permettent de détecter la présence d'alternatives textuelles pour les images,
+            mais ils ne peuvent pas juger de la pertinence ou de la qualité de ces alternatives.
+        </p>
     </section>
 
 </section>
