@@ -34,6 +34,68 @@
                 <cite>W3C - ARIA Authoring Practices Guide</cite>
             </footer>
         </blockquote>
+        <footer>
+            <a href="https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/" class="info" target="_blank">
+                W3C - Introduction to ARIA
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Principe 1 : un rôle ARIA est une promesse</h3>
+        <pre><code class="language-html">&lt;div role="button"&gt;Place Order&lt;/div&gt;</code></pre>
+        <p>
+            Le code ci-dessus est une promesse faite aux technologies d'assistance que l'élément
+            <code class="language-html">&lt;div&gt;</code> se comportera comme un bouton et donc que du code JavaScript
+            sera ajouté pour gérer les interactions utilisateur (clic, appui sur la touche Entrée ou Espace).
+        </p>
+        <p>
+            Contrairement à la balise HTML <code class="language-html">&lt;button&gt;</code> qui a un rôle ARIA implicite,
+            l'élément <code class="language-html">&lt;div&gt;</code> n'a pas de rôle ARIA par défaut.
+            Il est donc nécessaire d'ajouter le rôle ARIA <code class="language-html">role="button"</code> pour indiquer
+            son comportement.
+        </p>
+    </section>
+
+    <section>
+        <h3>Principe 2 : ARIA peut à la fois déguiser et améliorer la sémantique</h3>
+        <p>
+            Certains ARIA permettent de déguiser/surcharger la sémantique d'un élément HTML :
+        </p>
+        <pre><code class="language-html">&lt;a role="menu"&gt;Assistive tech users perceive this element as an item in a menu, not a link.&lt;/a&gt;
+&lt;a aria-label="Assistive tech users can only perceive the contents of this aria-label, not the link text" href="#"&gt;Link Text&lt;/a&gt;</code></pre>
+        <p>
+            D'autres ARIA permettent d'améliorer la sémantique d'un élément HTML :
+        </p>
+        <pre><code class="language-html">&lt;button aria-pressed="false"&gt;Muet&lt;/button&gt;</code></pre>
+        <p>
+            C'est la puissance d'ARIA. Elle permet aux auteurs de <strong>décrire presque n'importe quel composant</strong>
+            d'interface utilisateur de manière à ce que les technologies d'assistance puissent l'interpréter de façon fiable,
+            rendant ainsi les composants accessibles aux utilisateurs de technologies d'assistance.
+        </p>
+    </section>
+
+    <section>
+        <h3>Les dangers d'ARIA</h3>
+        <p>
+            ARIA est un outil puissant, mais il peut aussi être dangereux s'il est mal utilisé.
+            L'ajout d'ARIA à des éléments HTML sans comprendre pleinement son fonctionnement peut entraîner
+            <strong>des problèmes d'accessibilité</strong> et <strong>une expérience utilisateur dégradée</strong>.
+        </p>
+        <pre><code class="language-html">&lt;ul role="navigation"&gt;
+  &lt;!-- This is a navigation region, not a list. --&gt;
+  &lt;li&gt;&lt;a href="uri1"&gt;nav link 1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="uri2"&gt;nav link 2&lt;/a&gt;&lt;/li&gt;
+  &lt;!-- ERROR! Previous list items are not in a list! --&gt;
+&lt;/ul&gt;</code></pre>
+        <p>
+            Dans l'exemple ci-dessus, l'élément <code class="language-html">&lt;ul&gt;</code> est utilisé pour
+            définir une région de navigation en utilisant le rôle ARIA <code class="language-html">role="navigation"</code>.
+            Cependant, les éléments enfants <code class="language-html">&lt;li&gt;</code> ne sont pas dans une liste,
+            ce qui crée une incohérence sémantique.
+            Cela peut entraîner des problèmes pour les technologies d'assistance qui s'attendent à ce que les éléments
+            de liste soient contenus dans un élément de liste approprié.
+        </p>
     </section>
 
     <section>
@@ -466,6 +528,8 @@
         </ul>
         <p>
             Cependant, ces deux attributs sont maintenant <strong>obsolètes</strong> et ne doivent plus être utilisés.
+            Ces attributs faisaient partie d'un modèle de drag-and-drop qui n'a <strong>jamais été bien supporté par les
+            technologies d'assistance</strong> et qui s'est révélé peu utilisable en pratique.
         </p>
         <footer>
             <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes#drag-and-drop_attributes" class="info" target="_blank">
@@ -514,6 +578,17 @@
             Ces patterns sont des exemples d'utilisation des rôles ARIA pour des composants courants tels que les
             menus, les onglets, les dialogues, etc.
         </p>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Choisissez un framework CSS (Bootstrap, Foundation, etc.) et vérifiez si ses composants sont accessibles.
+                </li>
+                <li>
+                    Visitez des sites internet de votre choix et analysez l'accessibilité de leurs composants interactifs
+                    (menus, onglets, dialogues, etc.).
+                </li>
+            </ol>
+        </div>
         <footer>
             <a href="https://www.w3.org/WAI/ARIA/apg/patterns/" class="info" target="_blank">
                 W3C - ARIA Authoring Practices Guide (APG)
