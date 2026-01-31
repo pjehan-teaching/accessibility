@@ -7,4 +7,14 @@ document.getElementById('revealexpress').addEventListener('loaded', function(eve
 
   Prism.highlightAll();
 
+  var cartQty = 0;
+  function updateCart(delta) {
+    cartQty = Math.max(0, cartQty + delta);
+    document.getElementById('cart-qty').textContent = cartQty;
+    document.getElementById('cart-status').textContent =
+      'Panier : ' + cartQty + ' article(s), ' + (cartQty * 25) + ' €';
+  }
+  document.getElementById('cart-minus').addEventListener('click', function() { updateCart(-1); });
+  document.getElementById('cart-plus').addEventListener('click', function() { updateCart(1); });
+
 });

@@ -508,6 +508,31 @@
     </section>
 
     <section>
+        <h3>Attributs - Régions dynamiques - Démo</h3>
+        <p>
+            Voici un exemple de panier e-commerce utilisant <code class="language-html">aria-live</code>.
+            Activez un lecteur d'écran et cliquez sur les boutons pour observer les annonces vocales.
+        </p>
+        <div style="border: 1px solid #ccc; padding: 1em; margin-bottom: 1em; border-radius: 8px; text-align: center;">
+            <p><strong>T-shirt - 25 €</strong></p>
+            <button id="cart-minus" style="font-size: 1.2em; padding: 0.3em 0.8em;">−</button>
+            <span id="cart-qty" style="font-size: 1.2em; margin: 0 0.5em;">0</span>
+            <button id="cart-plus" style="font-size: 1.2em; padding: 0.3em 0.8em;">+</button>
+            <p aria-live="polite" aria-atomic="true" id="cart-status">
+                Panier : 0 article(s), 0 €
+            </p>
+        </div>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Activez un lecteur d'écran (VoiceOver, Narrator ou Orca) et interagissez avec
+                    les boutons + et − pour observer les annonces vocales.
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section>
         <h3>Attributs - Drag and drop</h3>
         <p>
             Les attributs ARIA de type "drag and drop" sont utilisés pour décrire les éléments pouvant être glissés
