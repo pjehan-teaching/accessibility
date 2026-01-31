@@ -27,14 +27,6 @@
     </section>
 
     <section>
-        <h3>Tanaguru</h3>
-    </section>
-
-    <section>
-        <h3>https://www.accessibilitychecker.org/</h3>
-    </section>
-
-    <section>
         <h3>Dev Tools</h3>
         <p>
             La plupart des navigateurs modernes intègrent des <strong>outils de développement</strong> (DevTools) qui
@@ -47,10 +39,10 @@
     <section>
         <h3>Dev Tools - Audit</h3>
         <p>
-            L'onglet Audit (ou Lighthouse dans Chrome) permet de réaliser un audit d'accessibilité
-            d'une page web.
-            Il analyse divers aspects de la page, tels que la structure du contenu, les alternatives textuelles,
-            la navigation au clavier, et fournit un rapport détaillé avec des suggestions d'amélioration.
+            L'onglet Audit (ou Lighthouse dans Chrome) permet de réaliser un audit d'accessibilité d'une page web.
+            Il <strong>analyse divers aspects</strong> de la page, tels que la structure du contenu,
+            les alternatives textuelles, la navigation au clavier, et fournit un <strong>rapport détaillé</strong>
+            avec des suggestions d'amélioration.
         </p>
         <p>
             Firefox intègre également un outil similaire appelé "Accessibility Inspector".
@@ -60,26 +52,40 @@
     <section>
         <h3>Dev Tools - Accessibility Tree</h3>
         <p>
-            L'arbre d'accessibilité (Accessibility Tree) est une représentation hiérarchique des éléments
-            d'une page web telle qu'elle est perçue par les technologies d'assistance.
+            L'arbre d'accessibilité (Accessibility Tree) est une <strong>représentation hiérarchique</strong> des éléments
+            d'une page web telle qu'elle est <strong>perçue par les technologies d'assistance</strong>.
             Il permet aux développeurs de comprendre comment leur contenu sera interprété par les lecteurs d'écran
             et autres outils d'assistance.
         </p>
         <p>
-            Il est basé sur le DOM (Document Object Model) de la page, mais simpifié pour ne montrer que les éléments
-            pertinents pour l'accessibilité, avec des informations supplémentaires telles que les rôles ARIA,
-            les états et les propriétés.
+            Il est <strong>basé sur le DOM</strong> (Document Object Model) de la page, mais <strong>simplifié</strong>
+            pour ne montrer que les éléments pertinents pour l'accessibilité, avec des informations supplémentaires
+            telles que les rôles ARIA, les états et les propriétés.
         </p>
     </section>
 
     <section>
-        <h3>Extensions Chrome</h3>
+        <h3>Extensions pour les navigateurs</h3>
         <ul>
             <li>
-                https://github.com/arneoio/rgaa-checker
+                <a href="https://wave.webaim.org/extension/" target="_blank">
+                    WAVE (Web Accessibility Evaluation Tool) par WebAIM
+                </a>
             </li>
             <li>
-                https://github.com/IBMa/equal-access
+                <a href="https://github.com/dequelabs/axe-core" target="_blank">
+                    axe DevTools par Deque Systems
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/IBMa/equal-access" target="_blank">
+                    Equal Access Toolkit par IBM
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/arneoio/rgaa-checker" target="_blank">
+                    RGAA Checker
+                </a>
             </li>
         </ul>
     </section>
@@ -96,6 +102,66 @@
             Par exemple, différents outils permettent de détecter la présence d'alternatives textuelles pour les images,
             mais ils ne peuvent pas juger de la pertinence ou de la qualité de ces alternatives.
         </p>
+    </section>
+    
+    <section>
+        <h3>Limitations</h3>
+        <p>Voici quelques exemples de critères du WCAG qui peuvent être complexes à évaluer automatiquement :</p>
+        <ul>
+            <li>
+                <p>
+                    <a href="https://www.w3.org/WAI/WCAG22/quickref/#non-text-content" target="_blank">
+                        1.1.1 Contenu non textuel
+                    </a> : Vérifier que toutes les images ont des alternatives textuelles appropriées.
+                </p>
+            </li>
+            <li>
+                <p>
+                    <a href="https://www.w3.org/WAI/WCAG22/quickref/#info-and-relationships" target="_blank">
+                        1.3.1 Informations et relations
+                    </a> : S'assurer que la structure du contenu est correctement marquée (titres, listes, tableaux).
+                </p>
+            </li>
+            <li>
+                <p>
+                    <a href="https://www.w3.org/WAI/WCAG22/quickref/#sensory-characteristics" target="_blank">
+                        1.3.3 Caractéristiques sensorielles
+                    </a> : Vérifier que les instructions ne dépendent pas uniquement de la forme, de la taille ou de la couleur.
+                </p>
+            </li>
+            <li>
+                <p>
+                    <a href="https://www.w3.org/WAI/WCAG22/quickref/#use-of-color" target="_blank">
+                        1.4.1 Utilisation de la couleur
+                    </a> : S'assurer que les informations ne sont pas transmises uniquement par la couleur.
+                </p>
+            </li>
+            <li>
+                ...
+            </li>
+        </ul>
+        <p>
+            De plus, l'accessibilité concerne également d'<strong>autres supports</strong> comme les vidéos,
+            les documents PDF, les applications mobiles, etc., qui peuvent nécessiter des outils spécifiques pour
+            une évaluation complète.
+        </p>
+    </section>
+
+    <section>
+        <h3>Comparaison des outils</h3>
+        <div class="instructions">
+            <ol>
+                <li>
+                    Sélectionnez une page web à évaluer.
+                </li>
+                <li>
+                    Utilisez plusieurs outils d'évaluation automatique pour analyser la page.
+                </li>
+                <li>
+                    Comparez les résultats obtenus par chaque outil.
+                </li>
+            </ol>
+        </div>
     </section>
 
 </section>
