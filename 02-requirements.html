@@ -1,0 +1,79 @@
+<section id="requirements">
+
+    <section>
+        <h2>Pré-requis</h2>
+    </section>
+
+    <section>
+        <h3>Balises HTML sémantiques</h3>
+        <p>
+            Avant de commencer à traiter l'accessibilité en programmation, nous allons
+            <strong>revoir quelques notions importantes en HTML</strong>.
+        </p>
+    </section>
+
+    <section>
+        <h3>HTML - Attributs utiles</h3>
+        <p>
+            Quelques attributs HTML importants pour l'accessibilité :
+        </p>
+        <ul>
+            <li>
+                <code class="language-html">lang</code> : Définit la langue du document ou d'un élément.
+                <pre><code class="language-html">&lt;html lang="fr"&gt;</code></pre>
+            </li>
+            <li>
+                <code class="language-html">alt</code> : Texte alternatif pour les images.
+                <pre><code class="language-html">&lt;img src="photo.jpg" alt="Description de l'image"&gt;</code></pre>
+            </li>
+            <li>
+                <code class="language-html">tabindex</code> : Contrôle l'ordre de navigation au clavier.
+                <pre><code class="language-html">&lt;div tabindex="0"&gt;Élément focusable&lt;/div&gt;</code></pre>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>HTML - Formulaires accessibles</h3>
+        <p>
+            Associer correctement les <strong>labels aux champs</strong> de formulaire est essentiel :
+        </p>
+        <pre><code class="language-html">&lt;!-- Méthode 1 : Attribut for/id --&gt;
+&lt;label for="email"&gt;Email&lt;/label&gt;
+&lt;input type="email" id="email" name="email"&gt;
+
+&lt;!-- Méthode 2 : Label englobant --&gt;
+&lt;label&gt;
+    Email
+    &lt;input type="email" name="email"&gt;
+&lt;/label&gt;
+
+&lt;!-- Indiquer les champs obligatoires --&gt;
+&lt;label for="name"&gt;Nom &lt;span aria-hidden="true"&gt;*&lt;/span&gt;&lt;/label&gt;
+&lt;input type="text" id="name" required aria-required="true"&gt;</code></pre>
+    </section>
+
+    <section>
+        <h3>HTML - Structure sémantique</h3>
+        <p>
+            Utiliser les <strong>balises HTML sémantiques</strong> améliore l'accessibilité et le référencement :
+        </p>
+        <pre><code class="language-html">&lt;header&gt;
+    &lt;nav aria-label="Navigation principale"&gt;...&lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;article&gt;
+        &lt;h1&gt;Titre principal&lt;/h1&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Sous-titre&lt;/h2&gt;
+            &lt;p&gt;Contenu...&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/article&gt;
+    &lt;aside&gt;Contenu secondaire&lt;/aside&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;...&lt;/footer&gt;</code></pre>
+    </section>
+    
+</section>
