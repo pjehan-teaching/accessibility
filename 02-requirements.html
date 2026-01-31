@@ -28,7 +28,21 @@
             </li>
             <li>
                 <code class="language-html">tabindex</code> : Contrôle l'ordre de navigation au clavier.
-                <pre><code class="language-html">&lt;div tabindex="0"&gt;Élément focusable&lt;/div&gt;</code></pre>
+                <ul>
+                    <li>
+                        <code class="language-html">tabindex="0"</code> : Rend l'élément focusable dans l'ordre naturel du DOM.
+                    </li>
+                    <li>
+                        <code class="language-html">tabindex="-1"</code> : Focusable uniquement via JavaScript
+                        (<code>element.focus()</code>), pas par la touche Tab.
+                    </li>
+                    <li>
+                        <code class="language-html">tabindex="1+"</code> : <strong>À éviter</strong>.
+                        Les valeurs positives modifient l'ordre de navigation et créent une expérience
+                        imprévisible pour les utilisateurs clavier.
+                        Il faut privilégier l'ordre naturel du DOM.
+                    </li>
+                </ul>
             </li>
         </ul>
     </section>
