@@ -157,7 +157,7 @@
         <pre><code class="language-html">
 &lt;button aria-describedby="buttontooltip"&gt;Bouton&lt;/button&gt;
 &lt;div role="tooltip" id="buttontooltip"&gt;
-    <p>Contenu du tooltip</p>
+    &lt;p&gt;Contenu du tooltip&lt;/p&gt;
 &lt;/div&gt;</code></pre>
         <p>
             Bien entendu, il faudra ajouter du code CSS pour gérer l'affichage du tooltip.
@@ -203,9 +203,9 @@
             et nécessiteront généralement l'utilisation de <strong>JavaScript</strong>.
         </p>
         <p>
-            De nouveaux, il est préférable d'utiliser les éléments HTML qui ont des rôles ARIA implicites,
-            comme <code class="language-html">&lt;button&gt;</code>, <code class="language-html">&lt;progressbar&gt;</code>,
-            <code class="language-html">&lt;checkbox&gt;</code>, etc.
+            De nouveau, il est préférable d'utiliser les éléments HTML qui ont des rôles ARIA implicites,
+            comme <code class="language-html">&lt;button&gt;</code>, <code class="language-html">&lt;progress&gt;</code>,
+            <code class="language-html">&lt;input type="checkbox"&gt;</code>, etc.
         </p>
         <footer>
             <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles#2._widget_roles" class="info" target="_blank">
@@ -555,7 +555,7 @@
             <li>
                 <code class="language-html">aria-labelledby</code> : Indique l'ID d'un élément qui sert de label pour
                 l'élément actuel.
-                <pre><code class="language-html">&lt;h2 id="heading"&gt;Comment utiliser les ARIA attributes&lt;h2&gt;
+                <pre><code class="language-html">&lt;h2 id="heading"&gt;Comment utiliser les ARIA attributes&lt;/h2&gt;
 &lt;button aria-labelledby="heading"&gt;Lire la suite&lt;/button&gt;</code></pre>
             </li>
             <li>
