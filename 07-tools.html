@@ -65,6 +65,50 @@
     </section>
 
     <section>
+        <h3>Dev Tools - Accessibility Tree - Exemple</h3>
+        <div class="container">
+            <div class="col">
+                <p><strong>HTML :</strong></p>
+                <pre><code class="language-html">&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Accueil&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;main&gt;
+  &lt;h1&gt;Bienvenue&lt;/h1&gt;
+  &lt;form&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;input type="email" id="email"
+           required&gt;
+    &lt;button type="submit"&gt;Envoyer&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/main&gt;</code></pre>
+            </div>
+            <div class="col">
+                <p><strong>Accessibility Tree :</strong></p>
+                <pre><code class="language-html">navigation
+├── list
+│   ├── listitem
+│   │   └── link "Accueil"
+│   └── listitem
+│       └── link "Contact"
+main
+├── heading (level 1) "Bienvenue"
+└── form
+    ├── label "Email"
+    ├── textbox "Email" (required)
+    └── button "Envoyer"</code></pre>
+            </div>
+        </div>
+        <p>
+            Les éléments sans valeur sémantique (<code class="language-html">&lt;div&gt;</code>,
+            <code class="language-html">&lt;span&gt;</code>) sont <strong>absents</strong> de l'arbre
+            d'accessibilité, sauf s'ils portent un rôle ARIA.
+        </p>
+    </section>
+
+    <section>
         <h3>Extensions pour les navigateurs</h3>
         <ul>
             <li>
