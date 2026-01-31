@@ -148,6 +148,34 @@
     </section>
 
     <section>
+        <h3>Testing automatisé en CI/CD</h3>
+        <p>
+            L'accessibilité peut être intégrée dans le <strong>workflow de développement</strong>
+            via des outils de testing automatisé, exécutés à chaque commit ou pull request :
+        </p>
+        <ul>
+            <li>
+                <a href="https://github.com/dequelabs/axe-core" target="_blank"><strong>axe-core</strong></a> :
+                Moteur de tests d'accessibilité utilisable en ligne de commande, dans Playwright, Cypress ou Selenium.
+            </li>
+            <li>
+                <a href="https://github.com/pa11y/pa11y" target="_blank"><strong>pa11y</strong></a> :
+                Outil CLI qui analyse une URL et retourne les erreurs d'accessibilité.
+                Facilement intégrable dans une pipeline CI/CD.
+            </li>
+            <li>
+                <a href="https://github.com/nickcolley/jest-axe" target="_blank"><strong>jest-axe</strong></a> :
+                Matcher Jest basé sur axe-core, permettant de tester l'accessibilité des composants
+                dans les tests unitaires.
+            </li>
+        </ul>
+        <p>
+            Ces outils détectent automatiquement une partie des violations WCAG, mais ne remplacent
+            pas un <strong>audit manuel</strong>.
+        </p>
+    </section>
+
+    <section>
         <h3>Comparaison des outils</h3>
         <div class="instructions">
             <ol>
