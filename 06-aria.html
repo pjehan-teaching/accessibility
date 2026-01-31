@@ -429,6 +429,35 @@
     </section>
 
     <section>
+        <h3>Attributs - Erreurs de formulaire</h3>
+        <p>
+            Les attributs ARIA permettent d'<strong>associer les messages d'erreur aux champs concernés</strong>
+            et de les faire annoncer par les technologies d'assistance :
+        </p>
+        <pre><code class="language-html">&lt;label for="email"&gt;Email&lt;/label&gt;
+&lt;input type="email" id="email"
+       aria-invalid="true"
+       aria-describedby="email-error"&gt;
+&lt;p id="email-error" role="alert"&gt;
+    Veuillez saisir une adresse email valide.
+&lt;/p&gt;</code></pre>
+        <ul>
+            <li>
+                <code class="language-html">aria-invalid="true"</code> : Indique que la valeur du champ
+                est incorrecte.
+            </li>
+            <li>
+                <code class="language-html">aria-describedby</code> : Associe le message d'erreur au champ,
+                pour que le lecteur d'écran l'annonce quand le champ reçoit le focus.
+            </li>
+            <li>
+                <code class="language-html">role="alert"</code> : Annonce immédiatement le message
+                d'erreur dès son apparition, sans attendre que l'utilisateur navigue jusqu'à lui.
+            </li>
+        </ul>
+    </section>
+
+    <section>
         <h3>Attributs - Régions dynamiques</h3>
         <p>
             Les attributs ARIA de type "régions dynamiques" sont utilisés pour décrire les sections de contenu qui
@@ -614,6 +643,9 @@
         <footer>
             <a href="https://www.w3.org/WAI/ARIA/apg/patterns/" class="info" target="_blank">
                 W3C - ARIA Authoring Practices Guide (APG)
+            </a>
+            <a href="https://inclusive-components.design/" class="info" target="_blank">
+                Inclusive Components
             </a>
         </footer>
     </section>
