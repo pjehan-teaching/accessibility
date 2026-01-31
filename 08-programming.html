@@ -40,6 +40,60 @@ function closeModal(modal, previousFocus) {
     </section>
 
     <section>
+        <h3>HTML - L'élément &lt;dialog&gt;</h3>
+        <p>
+            L'élément <code class="language-html">&lt;dialog&gt;</code> est une balise HTML native qui gère
+            automatiquement de nombreux aspects d'accessibilité :
+        </p>
+        <ul>
+            <li>Le rôle ARIA <code>dialog</code> est <strong>implicite</strong>.</li>
+            <li>Le <strong>focus est piégé</strong> (focus trap) à l'intérieur de la modale.</li>
+            <li>La touche <span class="keyboard-key">Échap</span> ferme la modale.</li>
+            <li>Le contenu en arrière-plan est marqué comme <strong>inerte</strong> (non interactif).</li>
+        </ul>
+        <pre><code class="language-html">&lt;dialog id="confirm"&gt;
+    &lt;h2&gt;Confirmer la suppression&lt;/h2&gt;
+    &lt;p&gt;Cette action est irréversible.&lt;/p&gt;
+    &lt;button onclick="this.closest('dialog').close('ok')"&gt;Confirmer&lt;/button&gt;
+    &lt;button onclick="this.closest('dialog').close()"&gt;Annuler&lt;/button&gt;
+&lt;/dialog&gt;</code></pre>
+        <p>
+            Utiliser <code class="language-html">&lt;dialog&gt;</code> évite de devoir recréer manuellement
+            ces comportements avec ARIA et JavaScript.
+        </p>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog" class="info" target="_blank">
+                MDN - The Dialog element
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>HTML - Popover API</h3>
+        <p>
+            L'attribut <code class="language-html">popover</code> permet de créer des éléments flottants
+            (tooltips, menus, popovers) de manière <strong>native</strong>, sans JavaScript ni ARIA :
+        </p>
+        <pre><code class="language-html">&lt;button popovertarget="infos"&gt;Aide&lt;/button&gt;
+&lt;div id="infos" popover&gt;
+    &lt;p&gt;Voici des informations complémentaires.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        <p>
+            Le navigateur gère automatiquement :
+        </p>
+        <ul>
+            <li>L'<strong>affichage et la fermeture</strong> (clic extérieur, touche <span class="keyboard-key">Échap</span>).</li>
+            <li>Le positionnement au-dessus du reste du contenu (<strong>top layer</strong>).</li>
+            <li>L'association entre le bouton déclencheur et le contenu affiché.</li>
+        </ul>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Popover_API" class="info" target="_blank">
+                MDN - Popover API
+            </a>
+        </footer>
+    </section>
+
+    <section>
         <h3>CSS - prefers-color-scheme</h3>
         <p>
             La media query <code class="language-css">prefers-color-scheme</code> permet de détecter si l'utilisateur
